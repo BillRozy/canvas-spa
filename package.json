@@ -4,6 +4,9 @@
   "dependencies": {
     "@rails/webpacker": "^3.0.2",
     "coffeescript": "1.12.7",
+    "eslint": "^4.8.0",
+    "eslint-plugin-html": "^3.2.2",
+    "eslint-plugin-vue": "^2.1.0",
     "vue": "^2.4.4",
     "vue-loader": "^13.0.5",
     "vue-template-compiler": "^2.4.4"
