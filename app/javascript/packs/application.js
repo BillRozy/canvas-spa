@@ -7,13 +7,25 @@
 // To reference this file, add <%= javascript_pack_tag 'application' %> to the appropriate
 // layout file, like app/views/layouts/application.html.erb
 
-console.log('Hello World from Webpacker');
 import Vue from 'vue';
-import App from '../app.vue';
+import VueRouter from 'vue-router';
+import router from 'router/router';
+import About from 'components/global/about.vue';
+import Catalog from 'components/global/catalog.vue';
+import Doorman from 'components/global/doorman.vue';
+import Events from 'components/global/events.vue';
+Vue.use(VueRouter);
 
 document.addEventListener('DOMContentLoaded', () => {
-  document.body.appendChild(document.createElement('hello'));
-  const app = new Vue(App).$mount('hello');
-
-  console.log(app);
+  console.log('DOMContentLoaded');
+  window.app = new Vue({
+    el: '#spa',
+    router,
+    mounted() {
+      console.log('Vue mounted!');
+    },
+    components: {
+      About, Catalog, Doorman, Events,
+    },
+  });
 });
