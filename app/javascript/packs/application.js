@@ -9,23 +9,22 @@
 
 import Vue from 'vue';
 import VueRouter from 'vue-router';
-import router from 'router/router';
-import About from 'components/global/about.vue';
-import Catalog from 'components/global/catalog.vue';
-import Doorman from 'components/global/doorman.vue';
-import Events from 'components/global/events.vue';
+import App from 'app.vue';
 Vue.use(VueRouter);
-
+console.log('BeforeDOMContentLoaded');
 document.addEventListener('DOMContentLoaded', () => {
-  console.log('DOMContentLoaded');
-  window.app = new Vue({
-    el: '#spa',
-    router,
-    mounted() {
-      console.log('Vue mounted!');
-    },
-    components: {
-      About, Catalog, Doorman, Events,
-    },
-  });
+  const app = new Vue(App).$mount('#spa');
+  //
+  // console.log(app);
+  // console.log('DOMContentLoaded');
+  // window.app = new Vue({
+  //   el: '#spa',
+  //   router,
+  //   mounted() {
+  //     console.log('Vue mounted!');
+  //   },
+  //   components: {
+  //     About, Catalog, Doorman, Events,
+  //   },
+  // });
 });
