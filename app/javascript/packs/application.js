@@ -9,8 +9,10 @@
 
 import Vue from 'vue';
 import VueRouter from 'vue-router';
+// import Vue2TouchEvents from 'vue2-touch-events';
 import App from 'app.vue';
 Vue.use(VueRouter);
+// Vue.use(Vue2TouchEvents);
 console.log('BeforeDOMContentLoaded');
 document.addEventListener('DOMContentLoaded', () => {
   const app = new Vue(App).$mount('#spa');

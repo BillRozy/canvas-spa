@@ -1,0 +1,161 @@
+.simple_button{
+  display: block;
+  width:75px;
+  height:75px;
+  box-sizing: border-box;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.social-button{
+  box-sizing: border-box;
+  width: 50px;
+  height: 50px;
+}
+
+.social-button:hover{
+  cursor: pointer;
+  filter: drop-shadow(1px 1px 3px black);
+
+}
+
+#facebook{
+  background: image_url("icons/facebook.png") no-repeat 50% 50%;
+  background-size: cover;
+}
+
+#vk{
+  background: image_url("icons/vk.png") no-repeat 50% 50%;
+  background-size: cover;
+}
+
+#insta{
+  background: image_url("icons/inst.png") no-repeat 50% 50%;
+  background-size: cover;
+}
+
+.simple_button:hover{
+  cursor: pointer;
+}
+
+.button_150_50{
+  width:150px;
+  height:50px;
+}
+
+.button_centered{
+  margin: 5px auto;
+}
+
+.delete_button{
+  display:block;
+  width:30px;
+  height: 30px;
+  box-sizing: border-box;
+  border:1px solid black;
+  border-radius: 5px;
+  background: white image_url('icons/delete_icon.png') no-repeat 50% 50%;
+  background-size: cover;
+}
+
+.photo_position{
+  position: absolute;
+  top:5%;
+  left:5%;
+}
+
+.inline_button{
+  display: inline-block;
+}
+
+#edit_portfolio_button{
+  background: transparent image_url('icons/edit_icon.png') no-repeat 50% 50%;
+  background-size: 75%;
+}
+
+#done_edit_portfolio_button{
+  background: transparent image_url('icons/done_icon.png') no-repeat 50% 50%;
+  background-size: 75%;
+}
+
+#goToTopBtn{
+  width:50px;
+  height:50px;
+  display: none;
+  position: fixed;
+  bottom: 20px;
+  right: 30px;
+  z-index: 99;
+  border: none;
+  outline: none;
+  background: image_url('icons/back_to_top.png') no-repeat 50% 50%;
+  background-size: cover;/* Set a background color */
+  color: white; /* Text color */
+  cursor: pointer; /* Add a mouse pointer on hover */
+  padding: 15px; /* Some padding */
+  border-radius: 10px; /* Rounded corners */
+}
+
+#goToTopBtn:hover {
+  background-color: #555; /* Add a dark-grey background on hover */
+}
+
+
+#skip-button-block{
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
+  align-items: center;
+  top: calc(50% - 100px);
+  right: 0;
+  position: absolute;
+  width:100px;
+  height:150px;
+  color: white;
+}
+
+#skip-button{
+   width: 100px;
+   height:100px;
+ }
+
+#skip-button:hover{
+  cursor: pointer;
+  filter: drop-shadow(1px 1px 3px darkgray);
+}
+
+
+
+.swap-section{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100px;
+  height:35px;
+  background: rgba(176,194,210,0.4);
+  border: 1px rgba(176,194,210,0.4) solid;
+  transition: 0.2s;
+  font-family: 'Bebas';
+  font-weight: 400;
+}
+
+.swap-section-button{
+  content:"";
+  height:30px;
+  width:30px;
+  top:0;
+  left:0;
+  background: image_url("reload.png") no-repeat 50% 50%;
+  background-size: cover;
+  margin-right: 10px;
+  transition: 0.2s;
+}
+
+.swap-section:hover{
+  cursor: pointer;
+  border:1px black solid;
+
+  .swap-section-button{
+    transform: rotate(-180deg);
+  }
+}

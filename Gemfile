@@ -18,7 +18,21 @@ gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
-
+gem 'rails_admin', '~> 1.0'
+gem 'pug-rails', '~> 2.0'
+gem 'devise'
+gem 'pug-ruby', '~> 1.0'
+gem "fog-aws"
+gem 'aws-sdk', '~> 2'
+gem 'carrierwave'
+gem 'image_magick'
+gem 'mini_magick'
+gem 'youtube_addy', '~> 1.0', '>= 1.0.4'
+gem 'pg'
+gem "paperclip", "~> 5.0.0"
+gem 'paperclip-av-transcoder'
+# Use ActiveModel has_secure_password
+gem 'bcrypt', '~> 3.1', '>= 3.1.11', platforms: :ruby
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
@@ -37,9 +51,8 @@ gem 'webpacker'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
-  # Adds support for Capybara system testing and selenium driver
-  gem 'capybara', '~> 2.13'
-  gem 'selenium-webdriver'
+  gem "better_errors"
+  gem "binding_of_caller"
 end
 
 group :development do

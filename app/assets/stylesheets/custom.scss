@@ -1,0 +1,828 @@
+@import "consts";
+
+
+$diamond-row-size: 210px;
+
+@font-face {
+  font-family: 'Gilroy';
+  src: url(asset-path('fonts/Gilroy-Light.woff'));
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Bebas';
+  src: url(asset-path('fonts/BebasNeue_Light.woff'));
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Bebas';
+  src: url(asset-path('fonts/BebasNeue_Regular.woff'));
+  font-weight: 700;
+  font-style: oblique;
+}
+
+@font-face {
+  font-family: 'Bebas';
+  src: url(asset-path('fonts/BebasNeue_Regular.woff'));
+  font-weight: 100;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Code Pro Light';
+  src: url(asset-path('fonts/CodeProLight.woff'));
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Code Pro Light';
+  src: url(asset-path('fonts/CodePro.woff'));
+  font-weight: 700;
+  font-style: oblique;
+}
+
+@font-face {
+  font-family: 'Code Pro Light';
+  src: url(asset-path('fonts/CodePro.woff'));
+  font-weight: 100;
+  font-style: normal;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  /* display: none; <- Crashes Chrome on hover */
+  -webkit-appearance: none;
+  margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+}
+
+input[type='number'] {
+  -moz-appearance:textfield;
+}
+
+select::-ms-expand {
+  display: none;
+}
+
+select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  text-indent: 1px;
+  text-overflow: '';
+}
+
+input, textarea, select{
+  font-family: 'Gilroy';
+}
+
+html {
+  min-height: 100%;
+  height: 100%;
+  min-width: $min_width;
+  -webkit-transition: background-color 1s;
+  transition: background-color 1s;
+}
+
+html.loading {
+  background: #FFF image-url('icons/rolling.gif') no-repeat 50% 50%;
+  background-size: 30px;
+  -webkit-transition: background-color 0s;
+  transition: background-color 0s;
+}
+
+video{
+  width: auto;
+  height: auto;
+  max-height: 100%;
+}
+
+body {
+  min-height: 100%;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  font-family: "Code Pro Light";
+  min-width: $min_width;
+  -webkit-transition: opacity 1s;
+  transition: opacity 1s;
+  overflow-y: auto;
+  font-size: $standard-font-size;
+}
+
+html.loading body {
+  opacity: 0;
+  -webkit-transition: opacity 0s;
+  transition: opacity 0s;
+}
+
+section {
+  box-sizing: border-box;
+  float: left;
+  width: 100%;
+  min-width: $min_width;
+  max-width: 1920px;
+  margin: 0;
+  min-height: 400px;
+  height: calc(100% - #{$header-height});
+}
+
+.page-wrapper{
+  box-sizing: border-box;
+  padding-top: 20px;
+  width:100%;
+  min-height:  calc(100% - #{$header-mini-height} - #{$footer_height} );
+  min-width: $min_width;
+  @media only screen and (min-height: 600px) {
+    min-height:  calc(100% - #{$header-height} - #{$footer_height} );
+  }
+
+
+  /* equal to footer height */
+  //margin-bottom: - $footer_height;
+  //overflow-y: auto;
+}
+.page-wrapper:after{
+  //content: "";
+  //display: block;
+  //height: $footer_height;
+}
+
+
+.horizontal_flex {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  align-content: center;
+}
+
+#photohome, #videohome  {
+  background: image-url('fon1part.png') repeat;
+  background-size: cover;
+  overflow: hidden;
+}
+
+#videohome{
+  background: image-url('fon2part.png') repeat;
+  background-size: cover;
+}
+
+
+h1 {
+  text-align: center;
+  font-size: 3em;
+  font-weight: 700;
+  -webkit-margin-before: 0;
+  -webkit-margin-after: 0;
+}
+
+h2 {
+  text-align: center;
+  font-size: 1em;
+  font-weight: 500;
+  margin-bottom: 0px;
+}
+
+.whitestripe form {
+  margin: 0;
+  width: 80%;
+}
+
+.active {
+  z-index: 50;
+}
+
+.proba {
+  transform: translateY(80px);
+  background: image-url('VIDEVO.png') no-repeat;
+  width: 100%;
+  height: 750px;;
+  z-index: 1;
+
+}
+
+/*-------------------------------------------*/
+/*SLAIDER*/
+.slider-wrapper {
+  position: relative;
+  max-width: $screen-md-min;
+  min-width: calc(#{$min_width} * 0.8);
+  min-height: 200px;
+  max-height: 250px;
+  margin: 0 auto;
+
+}
+
+/* Ширина лайдера */
+#slider, #slider2 {
+  width: calc(100% - 50px);
+  max-width: 800px;
+
+}
+
+/* Контейнер слайдера */
+.ui-slider {
+  position: relative;
+  margin: auto;
+  transform: translateY(50px);
+
+}
+
+/* Ползунок */
+.ui-slider .ui-slider-handle {
+  position: absolute;
+  z-index: 2;
+  width: 16px; /* Задаем нужную ширину */
+  height: 35px; /* и высоту */
+  background: black no-repeat; /* картинка изображающая ползунок. Или можно залить цветом, задать бордюр и скругления */
+  cursor: pointer;
+  border-radius:5px;
+}
+
+.ui-slider .ui-slider-range {
+  position: absolute;
+  z-index: 1;
+  font-size: .7em;
+  display: block;
+  border: 0;
+  overflow: hidden;
+}
+
+/* горизонтальный слайдер (сама полоса по которой бегает ползунок) */
+.ui-slider-horizontal {
+  height: 4px; /* задаем высоту согласно дизайна */
+}
+
+.ui-slider-horizontal:hover{
+  cursor: pointer;
+}
+
+/* позиционируем ползунки */
+.ui-slider-horizontal .ui-slider-handle {
+  top: -15px;
+  margin-left: -5px;
+}
+
+.ui-slider-horizontal .ui-slider-handle:hover{
+  background: darkgray no-repeat;
+}
+
+.ui-slider-horizontal .ui-slider-range {
+  top: 0;
+  height: 100%;
+}
+
+.ui-slider-horizontal .ui-slider-range-min {
+  left: 0;
+}
+
+.ui-slider-horizontal .ui-slider-range-max {
+  right: 0;
+}
+
+/* оформление полосы по которой ходит ползунок */
+.ui-widget-content {
+  background: lightgray;
+}
+
+/* оформление активного участка (между двумя ползунками) */
+.ui-widget-header {
+  background: gray;
+}
+
+/* скругление для полосы слайдера */
+
+.slider-price-cell {
+  position: absolute;
+  width: 60px;
+  font-size: 1.3em;
+  top: 10%;
+  font-family: "Code Pro Light";
+  font-weight: 700;
+}
+
+.slider-wrapper span {
+  position: absolute;
+  width: 200px;
+  font-size: 1.4em;
+  display: block;
+  text-align: center;
+  left: 50%;
+  top: 10%;
+  margin-left: -100px;
+
+}
+
+.cell-min {
+  left: 5%;
+  border: none;
+}
+
+.cell-max {
+  right: 0%;
+  border: none;
+}
+
+.btn-search {
+  display: block;
+  border: 1px solid black;
+  height: 50px;
+  width: 50%;
+  min-width: 88px;
+  max-width: 300px;
+
+  color: white;
+  text-align: center;
+  background: black;
+  text-decoration: none;
+  -webkit-filter: drop-shadow(0 0 2px black);
+  transition: 0.5s ease;
+  font-size: 1.5em;
+  line-height: 50px;
+  margin-bottom: 20px;
+
+  @media only screen and (max-height: $screen-xsm-min) {
+    &{
+      margin-bottom: 0;
+    }
+
+  }
+}
+
+.btn-search div {
+  padding: 2px;
+  border: 1px solid gray;
+  border-radius: 5%;
+}
+
+.btn-search:hover {
+  background: gray;
+  cursor: pointer;
+}
+
+.slider-controls {
+  height: 100px;
+  max-width: $screen-md-min;
+  min-width: $screen-xsm-min;
+  margin: 0 auto;
+  img {
+    margin: 0 auto;
+    width: 50px;
+    height: 50px;
+    display: block;
+  }
+}
+
+#btn-showfilters, #btn-hidefilters, #btn2-showfilters, #btn2-hidefilters {
+  display: block;
+  border: none;
+  background: none;
+  color: gray;
+  width: 180px;
+  margin: 0 auto;
+  transition: all 0.5s ease;
+}
+
+#btn-hidefilters, #btn2-hidefilters {
+  margin-top: calc(1.6 * #{$diamond-row-size});
+}
+
+#btn-showfilters:hover, #btn-hidefilters:hover, #btn2-showfilters:hover, #btn2-hidefilters:hover {
+  -webkit-filter: drop-shadow(0px 0px 1px lightgray);
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.filter-wrapper {
+  position: relative;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  width: 80%;
+  height: 400px;
+  max-width: 1200px;
+  margin: -20px auto;
+}
+
+#filter-item-front-1 {
+  background-image: image-url('sections/tfp.jpg');
+  background-size: cover;
+}
+
+#filter-item-front-2 {
+  background-image: image-url('sections/fashion.jpg');
+  background-size: cover;
+}
+
+#filter-item-front-3 {
+  background-image: image-url('sections/wedding.jpg');
+  background-size: cover;
+}
+
+#filter-item-front-4 {
+  background-image: image-url('sections/familyandkids.jpg');
+  background-size: cover;
+}
+
+#filter-item-front-5 {
+  background-image: image-url('sections/holidays.jpg');
+  background-size: cover;
+}
+
+#filter-item-front-6 {
+  background-image: image-url('sections/party.jpg');
+  background-size: cover;
+}
+
+#filter-item-front-7 {
+  background-image: image-url('sections/personal.jpg');
+  background-size: cover;
+}
+
+#filter-item-front-8 {
+  background-image: image-url('sections/lovestory.jpg');
+  background-size: cover;
+}
+
+#filter-item-front-9 {
+  background-image: image-url('sections/commerce.jpg');
+  background-size: cover;
+}
+
+#filter-item-front-10 {
+  background-image: image-url('sections/interrior.jpg');
+  background-size: cover;
+}
+
+#filter-item-front-11 {
+  background-image: image-url('sections/objective.jpg');
+  background-size: cover;
+}
+
+#filter-item-front-12 {
+  background-image: image-url('sections/others.jpg');
+  background-size: cover;
+}
+
+#videofilter-item-front-1{
+  background-image: image-url('sections/clips.jpg');
+  background-size: cover;
+}
+
+#videofilter-item-front-2{
+  background-image: image-url('sections/art.jpg');
+  background-size: cover;
+}
+
+#videofilter-item-front-3{
+  background-image: image-url('sections/wedding.jpg');
+  background-size: cover;
+}
+
+#videofilter-item-front-4{
+  background-image: image-url('sections/holidays.jpg');
+  background-size: cover;
+}
+
+#videofilter-item-front-5{
+  background-image: image-url('sections/party.jpg');
+  background-size: cover;
+}
+
+#videofilter-item-front-6{
+  background-image: image-url('sections/lovestory.jpg');
+  background-size: cover;
+}
+
+#videofilter-item-front-7{
+  background-image: image-url('sections/commerce.jpg');
+  background-size: cover;
+}
+
+#videofilter-item-front-8{
+  background-image: image-url('sections/others.jpg');
+  background-size: cover;
+}
+
+#videofilter-item-front-9 {
+  background-image: image-url('sections/motiondesign.jpg');
+  background-size: cover;
+}
+.registration-box {
+  background-color: rgb(62, 63, 66);
+  border-radius: 5px;
+  font-family: 'Code Pro Light';
+  padding: 20px 0;
+  max-width: 450px;
+  min-width: 200px;
+  min-height: 450px;
+  width: 90%;
+  margin: 0 auto;
+  font-weight: 100;
+  filter: drop-shadow(0px 0px 5px black);
+}
+
+.registration-box a {
+  text-decoration: none;
+  color: whitesmoke;
+  transition-duration: 200ms;
+}
+
+.registration-box a:hover {
+  text-decoration: underline;
+}
+
+.registration-box-fields-wrapper {
+  display: flex;
+  min-width: 175px;
+  max-width: 350px;
+  width: 100%;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.add-shooting, .add-videography{
+  box-sizing: border-box;
+  min-height: 380px;
+  max-height: 380px;
+
+  .registration-box{
+    min-height: 340px;
+    max-height: 340px;
+    height: 100%;
+    font-family: 'Code Pro Light';
+    font-weight: 100;
+
+    .category_and_price_field{
+      width:80%;
+      display: flex;
+      margin: 0 auto;
+      margin-bottom: 10px;
+    }
+
+
+    .register_field {
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      box-sizing: border-box;
+
+      select{
+        width:100px;
+        height:30px;
+        border-radius: 10px;
+        padding: 5px;
+      }
+    }
+
+    .register_label {
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      box-sizing: border-box;
+      padding: 5px;
+      text-align: center;
+      color: whitesmoke;
+      min-height: 20px;
+      line-height: 20px;
+    }
+
+    .register_field_description{
+      width:80%;
+      border-radius: 10px;
+      height:90px;
+    }
+
+    .register_field_select{
+
+    }
+  }
+}
+
+.register_field {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 2;
+  min-width: 175px;
+  min-height: 45px;
+  padding: 5px;
+  box-sizing: border-box;
+  text-align: center;
+  color: whitesmoke;
+  line-height: 45px;
+  max-height: 110px;
+  margin: 0 auto;
+}
+
+.small_mode{
+  min-width: 100px;
+}
+
+.registration-box .register_field_price{
+  width:100px;
+  height:30px;
+}
+
+.full-row-field {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 2;
+  padding: 5px;
+  min-height: 50px;
+  flex-basis: 350px;
+  min-width: 175px;
+  box-sizing: border-box;
+  text-align: center;
+  line-height: 50px;
+  color: white;
+
+  &.full-row-field-link{
+    min-height: 30px;
+    line-height: 30px;
+    padding: 5px;
+  }
+}
+
+
+
+.quart-row-field {
+  display: block;
+  width: 25%;
+  height: 100%;
+  line-height: 100%;
+}
+
+.quart-row-field input{
+  height: 100%;
+}
+
+.half-row-field {
+  display: block;
+  width: 50%;
+  height: 100%;
+}
+
+.form-header {
+  background: rgb(19, 20, 22);
+  min-height: 75px;
+  font-weight: bold;
+  line-height: 75px;
+  color: white;
+  border-radius: 5px 5px 0 0;
+  margin-bottom: 25px;
+}
+
+.form-submit {
+  margin-top: 0;
+}
+
+.registration-box input {
+  width: 80%;
+  margin: 0;
+  min-height: 40px;
+  box-sizing: border-box;
+  padding: 5px;
+  line-height: 40px;
+  font-size: 1.2em;
+  border-radius: 5px;
+}
+
+.registration-box .field_with_errors input{
+  border: 1px red solid;
+}
+
+.registration-box .form-submit-btn {
+  margin:10px 0;
+  background: whitesmoke;
+  color: rgb(19, 20, 22);
+  transition: 0.3s;
+}
+
+.form-submit-btn:hover {
+  cursor: pointer;
+  background: rgb(19, 20, 22);
+  color: whitesmoke;
+}
+
+.check-box-replace-button {
+  border: white 2px solid;
+  border-radius: 2px;
+  padding: 10px;
+  color: whitesmoke;
+  box-sizing: border-box;
+}
+
+.check-box-replace-button:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.custom-checkbox-checked {
+  background: whitesmoke;
+  color: black;
+}
+
+.alert {
+  width: 50%;
+  margin: 20px auto;
+  background: lightpink;
+  border-radius: 10px;
+  padding: 10px;
+  display: none;
+}
+
+.site-container {
+  width: 100%;
+}
+
+h1 {
+  text-align: center;
+}
+
+#flickrItems {
+  display: block;
+  max-width: $screen-md-min;
+  min-width: $screen-xsm-min;
+  margin: 10px auto;
+  .diamond-row-wrap {
+    margin: 0 auto;
+  }
+}
+
+.nice_button {
+  display: block;
+  width: 100px;
+  height: 100px;
+  border-radius: 10px;
+  //border: darkgray;
+  //background: linear-gradient(to bottom, #999999, #BBBBBB);
+}
+
+.centered_block {
+  margin: 10px auto 0;
+}
+
+.add_new_item {
+  display: block;
+  width: calc(100% - 40px);
+  height: 100%;
+  background: image_url("icons/add_icon.png") no-repeat 50% 50%;
+  background-size: 50%;
+
+}
+
+#tempObjects {
+  display: none;
+}
+
+.form-element-with-title {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  min-width: 70px;
+  max-width: 150px;
+}
+
+.form-element-with-title *{
+  width: 100%;
+}
+
+.autosize-img{
+  height: 100%;
+  width: auto;
+  max-width: 100%;
+}
+
+#place-for-drop{
+  min-height: 200px;
+  outline: 2px gray dashed;
+  outline-offset: -8px;
+  overflow-y: auto;
+}
+
+
+.slider-container {
+  flex-grow: 10;
+  min-width: 160px;
+  flex-basis: 160px;
+  position: relative;
+  height: 100%;
+}
+
+
+.social-buttons-block{
+  display: none;
+  justify-content: space-around;
+  align-items: center;
+  position: absolute;
+  left: calc(50% - 100px);
+  bottom:100px;
+  width:200px;
+  height:100px;
+}
