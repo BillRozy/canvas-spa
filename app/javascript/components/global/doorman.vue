@@ -1,6 +1,6 @@
 <template lang="pug">
   .doorman
-    transition
+    transition(name="component-fade")
       keep-alive
         photostart(v-if="onPhotoPage")
         videostart(v-if="!onPhotoPage")
@@ -18,6 +18,11 @@ export default {
   components: {
     Photostart, Videostart,
   },
+  methods: {
+    swapPage() {
+      this.onPhotoPage = !this.onPhotoPage;
+    },
+  },
   mounted() {
     axios.get('/api/doormanprices')
       .then(responce => {
@@ -33,6 +38,20 @@ export default {
   .doorman{
     width: 100%;
     height: calc(100% - 60px);
-    background: red;
+  }
+  .component-fade-enter-active, .component-fade-leave-active {
+    transition:.3s ease;
+  }
+  .component-fade-leave{
+    transform: translateX(-1000);
+    transition:.3s ease;
+  }
+  .component-fade-leave-to{
+    transform: translateX(-50%);
+    opacity: 0;
+  }
+  .component-fade-enter-to{
+    transform: translateX(50%);
+    opacity: 0;
   }
 </style>

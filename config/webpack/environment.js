@@ -7,7 +7,15 @@ environment.plugins.set(
     $: 'jquery',
     jQuery: 'jquery',
     jquery: 'jquery',
+  })
+);
 
+environment.plugins.set(
+  'Define',
+  new webpack.DefinePlugin({
+    'process.env': {
+      NODE_ENV: '"development"',
+    },
   })
 );
 
