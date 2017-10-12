@@ -9,12 +9,16 @@
 
 import Vue from 'vue';
 import VueRouter from 'vue-router';
+import axios from 'axios';
 // import Vue2TouchEvents from 'vue2-touch-events';
 import App from 'app.vue';
 Vue.use(VueRouter);
 // Vue.use(Vue2TouchEvents);
 console.log('BeforeDOMContentLoaded');
 document.addEventListener('DOMContentLoaded', () => {
+  const token = document.getElementsByName('csrf-token')[0].getAttribute('content');
+  axios.defaults.headers.common['X-CSRF-Token'] = token;
+  axios.defaults.headers.common.Accept = 'application/json';
   const app = new Vue(App).$mount('#spa');
   //
   // console.log(app);

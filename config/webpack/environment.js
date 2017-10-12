@@ -10,13 +10,4 @@ environment.plugins.set(
   })
 );
 
-environment.plugins.set(
-  'Define',
-  new webpack.DefinePlugin({
-    'process.env': {
-      NODE_ENV: '"development"',
-    },
-  })
-);
-
 module.exports = environment;

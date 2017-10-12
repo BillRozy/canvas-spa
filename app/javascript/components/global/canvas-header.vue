@@ -12,10 +12,15 @@ header
     router-link#logo(to='/')
       .header_decor_triangle
     router-link(to='events') Новости
+  personal-cabinet
 </template>
 <script>
+import PersonalCabinet from 'components/global/personal-cabinet.vue';
 export default {
   name: '',
+  components: {
+    PersonalCabinet
+  },
   data: () => ({
     menuIsOpened: false,
   }),
@@ -248,52 +253,6 @@ header {
       display: inline-block;
     }
   }
-
-  #profile-block-menu-button
-  {
-    display: inline-block;
-    width:40px;
-    height:40px;
-    background:url('~assets/images/arrow-down.png') no-repeat;
-    background-size: cover;
-
-    &:hover{
-      cursor: pointer;
-    }
-  }
-
-  .personal-cabinet {
-    float: right;
-    display: flex;
-    justify-content: space-around;
-    align-content: center;
-    align-items: center;
-    height: 100%;
-    width: 20%;
-    a{
-      display: inline-flex;
-      height: 100%;
-      min-height: 80px;
-      align-items: center;
-    }
-
-    @media only screen and (max-width: $header-critical-size) {
-      width: 40%;
-      min-width: 200px;
-    }
-  }
-
-  @media only screen and (max-width: $header-critical-size) {
-
-  }
-
-  .header-avatar{
-    height: 100%;
-    width: auto;
-    max-width: $header-mini-height;
-    max-height: $header-mini-height;
-  }
-
 }
 
 .zaglushka{

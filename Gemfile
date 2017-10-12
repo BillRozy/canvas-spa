@@ -31,6 +31,7 @@ gem 'youtube_addy', '~> 1.0', '>= 1.0.4'
 gem 'pg'
 gem "paperclip", "~> 5.0.0"
 gem 'paperclip-av-transcoder'
+gem 'jwt'
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1', '>= 3.1.11', platforms: :ruby
 # Use CoffeeScript for .coffee assets and views
