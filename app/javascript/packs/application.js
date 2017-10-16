@@ -10,9 +10,21 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 import axios from 'axios';
+import VueAxios from 'vue-axios';
+import VueAuth from '@websanova/vue-auth';
+import router from '../router/router.js';
+Vue.router = router;
 // import Vue2TouchEvents from 'vue2-touch-events';
 import App from 'app.vue';
 Vue.use(VueRouter);
+Vue.use(VueAxios, axios);
+Vue.axios.defaults.baseURL = '';
+Vue.use(VueAuth, {
+  auth: require('@websanova/vue-auth/drivers/auth/devise.js'),
+  http: require('@websanova/vue-auth/drivers/http/axios.1.x.js'),
+  router: require('@websanova/vue-auth/drivers/router/vue-router.2.x.js'),
+});
+
 // Vue.use(Vue2TouchEvents);
 console.log('BeforeDOMContentLoaded');
 document.addEventListener('DOMContentLoaded', () => {

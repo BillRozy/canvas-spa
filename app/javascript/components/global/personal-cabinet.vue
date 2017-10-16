@@ -5,8 +5,8 @@
     a#name_header_link(:href='current_user.profile.link') {{current_user.profile.name}}
     #profile-block-menu-button(clicked='false', @click='menuOpened = !menuOpened')
   .personal-cabinet-wrapper(v-else='')
-    a#name_header_link(href='sign_in') Sign In
-    a#sign_up_btn(href='sign_up') Sign Up
+    router-link(to='sign_in') Войти
+    router-link(to='sign_up') Регистрация
   #profile-block-menu(v-show='menuOpened')
     div(v-if='isSigned')
       a(:href='current_user.profile.link') Profile
